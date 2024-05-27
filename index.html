@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo-App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>To Do App</h1>
+    </header>
+    <nav>
+      <form id="form">
+        <label for="new-task">Task</label>
+        <input
+          type="text"
+          id="new-task"
+          name="new-task"
+          placeholder="add-something!"
+        />
+        <input type="submit" value="Submit" id="submit-btn" />
+        <button id="clear-btn">Clear List</button>
+      </form>
+    </nav>
+    <main>
+      <ol id="list"></ol>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

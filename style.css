@@ -1,0 +1,26 @@
+body {
+  font-family: system-ui;
+}
+
+header,
+nav,
+main {
+  display: flex;
+  justify-content: center;
+}
+
+ul,
+ol {
+  list-style: none;
+  display: block;
+}
+
+.deleteTask-btn {
+  background-color: brown;
+  color: white;
+  border: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+}
