@@ -14,7 +14,7 @@ const addToList = (task) => {
   <li class='task-ele'>
     <input type="checkbox" class='completed'/>
     ${task}
-    <button class='deleteTask-btn'>🗑</button>
+    <button class='deleteTask-btn'>✖</button>
   </li>
 `;
   listEle.insertAdjacentHTML('afterbegin', html);
@@ -23,11 +23,9 @@ const addToList = (task) => {
   const taskEle = document.querySelector('.task-ele');
   const completedEle = document.querySelector('.completed');
   completedEle.addEventListener('change', () => {
-    if (completedEle.checked) {
-      taskEle.classList.toggle('completed');
-    } else {
-      taskEle.classList.toggle('completed');
-    }
+    completedEle.checked
+      ? taskEle.classList.toggle('completed')
+      : taskEle.classList.toggle('completed');
   });
 };
 
@@ -36,6 +34,7 @@ submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const taskEle = document.getElementById('new-task');
   const task = taskEle.value;
+  if (task === '') return;
   addToList(task);
   taskEle.value = '';
 });

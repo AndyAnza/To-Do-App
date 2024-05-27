@@ -16,11 +16,16 @@ ol {
 }
 
 .deleteTask-btn {
-  background-color: brown;
-  color: white;
+  color: rgba(176, 21, 42, 0.654);
+  background-color: white;
   border: 0;
 }
 
 .completed {
   text-decoration: line-through;
+  color: rgba(176, 21, 42, 0.654);
+}
+
+li {
+  width: 50vw;
 }
