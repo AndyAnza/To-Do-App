@@ -14,7 +14,7 @@ const addToList = (task) => {
   <li class='task-ele'>
     <input type="checkbox" class='completed'/>
     ${task}
-    <button class='deleteTask-btn'>✖</button>
+    <button class='deleteTask-btn'><img src="./assets/img/delete.png" alt="trash can"/></button>
   </li>
 `;
   listEle.insertAdjacentHTML('afterbegin', html);

@@ -1,5 +1,7 @@
 body {
   font-family: system-ui;
+  background-color: #373a40;
+  margin: 0;
 }
 
 header,
@@ -13,19 +15,55 @@ ul,
 ol {
   list-style: none;
   display: block;
+  padding: 0 0 0 0;
+}
+
+h1 {
+  color: #eeeeee;
+}
+
+#new-task,
+#submit-btn,
+#clear-btn {
+  height: 4vh;
+  box-sizing: border-box;
+  padding-left: 4px;
+  margin: 0;
+}
+
+#submit-btn,
+#clear-btn {
+  background-color: #dc5f00;
+  border: 0;
+  color: #eeeeee;
+  margin: 0;
+  padding: 0;
+  width: 2.7rem;
+  font-weight: bold;
 }
 
 .deleteTask-btn {
-  color: rgba(176, 21, 42, 0.654);
-  background-color: white;
+  background: transparent;
+  opacity: 80%;
   border: 0;
 }
 
 .completed {
   text-decoration: line-through;
-  color: rgba(176, 21, 42, 0.654);
+  color: #eeeeee;
+  background-color: #dc5f00;
 }
 
 li {
-  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: medium;
+  background-color: #eeeeee;
+  color: #373a40;
+  width: 60vw;
+  height: 4vh;
+  max-height: fit-content;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
