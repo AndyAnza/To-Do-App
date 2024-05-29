@@ -8,18 +8,26 @@
   </head>
   <body>
     <header>
-      <h1>To Do App</h1>
+      <h1 class="title h1-theme-1">To-Do-App</h1>
+      <div class="switch-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-switch" />
+          <div class="toggle-switch-background">
+            <div class="toggle-switch-handle"></div>
+          </div>
+        </label>
+      </div>
     </header>
     <nav>
       <form id="form">
         <input
           type="text"
-          id="new-task"
+          class="new-task"
           name="new-task"
           placeholder="New Task"
         />
-        <input type="submit" value="+" id="submit-btn" />
-        <button id="clear-btn">Clear</button>
+        <input type="submit" value="+" class="submit-btn" />
+        <button class="clear-btn">Clear</button>
       </form>
     </nav>
     <main>

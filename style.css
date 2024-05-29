@@ -1,10 +1,15 @@
 body {
   font-family: system-ui;
-  background-color: #373a40;
   margin: 0;
+  background-color: #373a40;
 }
 
-header,
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 10vh;
+}
+
 nav,
 main {
   display: flex;
@@ -18,24 +23,107 @@ ol {
   padding: 0 0 0 0;
 }
 
-h1 {
-  color: #eeeeee;
+.switch-container {
+  justify-self: end;
+  align-self: center;
+  padding-right: 10px;
 }
 
-#new-task,
-#submit-btn,
-#clear-btn {
+/* SWITCH STYLE */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.toggle-switch input[type='checkbox'] {
+  display: none;
+}
+
+.toggle-switch-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 2px #ccc;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch-handle {
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  right: -35px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  text-shadow: 1px 1px #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggle-switch input[type='checkbox']:checked + .toggle-switch-handle {
+  transform: translateX(45px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px #373a40;
+}
+
+.toggle-switch input[type='checkbox']:checked + .toggle-switch-background {
+  background-color: #373a40;
+  box-shadow: inset 0 0 0 2px #373a40;
+}
+
+.toggle-switch input[type='checkbox']:checked + .toggle-switch:before {
+  content: 'On';
+  color: #373a40;
+  right: -15px;
+}
+
+.toggle-switch
+  input[type='checkbox']:checked
+  + .toggle-switch-background
+  .toggle-switch-handle {
+  transform: translateX(20px);
+}
+
+h1 {
+  color: #eeeeee;
+  justify-self: start;
+  align-self: center;
+  padding-left: 10px;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.new-task,
+.submit-btn,
+.clear-btn {
   height: 4vh;
   box-sizing: border-box;
   padding-left: 4px;
   margin: 0;
 }
 
-#submit-btn,
-#clear-btn {
+.submit-btn,
+.clear-btn {
   background-color: #dc5f00;
-  border: 0;
   color: #eeeeee;
+  border: 0;
   margin: 0;
   padding: 0;
   width: 2.7rem;
@@ -48,22 +136,43 @@ h1 {
   border: 0;
 }
 
-.completed {
-  text-decoration: line-through;
-  color: #eeeeee;
-  background-color: #dc5f00;
-}
-
 li {
+  background-color: #eeeeee;
+  color: #373a40;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: medium;
-  background-color: #eeeeee;
-  color: #373a40;
   width: 60vw;
   height: 4vh;
   max-height: fit-content;
   border-radius: 5px;
   margin-bottom: 5px;
+}
+
+.completed-theme-1 {
+  text-decoration: line-through;
+  color: #eeeeee;
+  background-color: #dc5f00;
+}
+
+/* THEME-2 */
+
+.h1-theme-2 {
+  color: #373a40;
+}
+
+.btn-theme-2 {
+  background-color: #c4dfdf;
+  color: #373a40;
+}
+
+.li-theme-2 {
+  background-color: #e3f4f4;
+  color: #373a40;
+}
+.completed-theme-2 {
+  text-decoration: line-through;
+  background-color: #c4dfdf;
+  color: #686d76;
 }
