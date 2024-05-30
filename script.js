@@ -13,7 +13,7 @@ const deleteTask = () => {
   deleteBtn.addEventListener('click', () => taskEle.remove());
 };
 
-const addToList = (task) => {
+const newTask = (task) => {
   let html;
   if (toggleSwitchEle.checked) {
     html = `
@@ -34,34 +34,54 @@ const addToList = (task) => {
   }
   listEle.insertAdjacentHTML('afterbegin', html);
   deleteTask();
-  completedSwitch();
+  checkboxHandler();
 };
 
 /*
 NOTES:
+THIS FUNCTION FOCUSES MORE ABOUT THE STATUS OF THE CHECKBOX TO HANDLE THE COMPLETED-THEME, BUT IT DO EVALUETES THE TOGGLE SWITCH AS WELL
+
 - when a task is created:
-if toggle is ON and checkbox is checked it will add complete-theme-2 styling
+if toggle is ON and checkbox is checked it will add complete-theme-2 styling, and remove compelete-theme-1
 else
-if toggle is OFF and checkbox is checked it will add complete-theme-1 styling
-- if we toggle the SWITCH then the styling will be handled by the changeTheme function
+if toggle is ON and checkbox is UNchecked it will remove complete-theme-2
+
+
+if toggle is OFF and checkbox is checked it will add complete-theme-1 styling and remove complete-theme-2
+else 
+if toggle is OFF and checkbox is unchecked it will remove complete-theme-2
+
+- if we toggle the SWITCH then the styling will be handled by the toggleHandler function
 */
-const completedSwitch = () => {
+const checkboxHandler = () => {
   const taskEle = document.querySelector('.task-ele');
   const completedEle = document.getElementById('checkbox-Ele');
   completedEle.addEventListener('change', () => {
-    toggleSwitchEle.checked && completedEle.checked
-      ? taskEle.classList.toggle(`completed-theme-2`)
-      : taskEle.classList.toggle(`completed-theme-1`);
+    if (toggleSwitchEle.checked && completedEle.checked) {
+      taskEle.classList.add(`completed-theme-2`);
+      taskEle.classList.remove(`completed-theme-1`);
+    } else if (toggleSwitchEle.checked && !completedEle.checked) {
+      taskEle.classList.remove(`completed-theme-2`);
+    }
+
+    if (!toggleSwitchEle.checked && completedEle.checked) {
+      taskEle.classList.add(`completed-theme-1`);
+      taskEle.classList.remove(`completed-theme-2`);
+    } else if (!toggleSwitchEle.checked && !completedEle.checked) {
+      taskEle.classList.remove(`completed-theme-1`);
+    }
   });
 };
 
 /*
 NOTES:
+THIS FUNCTION FOCUSES IF THE TOGGLE  IS ON OR OFF
+
 H1, submitbtn, clearbtn styling was added directly into the elements or by adding a class. Remember that css has hierarchy so ids have a higher hierachy rather than classes.
 Toggle was used in this elements since the theme1 was added directly and with toggle we were adding a new class with the theme-2 that overwrittes theme-1.
 
 */
-const changeTheme = () => {
+const toggleHandler = () => {
   // IF TOGGLE IS ON ADD THEME-2 AND REMOVE THEME-1
   if (toggleSwitchEle.checked) {
     // console.log('switch is working');
@@ -73,11 +93,11 @@ const changeTheme = () => {
       .querySelectorAll('.li-theme-1')
       .forEach((element) => element.classList.add('li-theme-2'));
     document
-      .querySelectorAll('.completed-theme-1')
-      .forEach((element) => element.classList.add('completed-theme-2'));
-    document
       .querySelectorAll('.li-theme-2')
       .forEach((element) => element.classList.remove('li-theme-1'));
+    document
+      .querySelectorAll('.completed-theme-1')
+      .forEach((element) => element.classList.add('completed-theme-2'));
     document
       .querySelectorAll('.completed-theme-2')
       .forEach((element) => element.classList.remove('completed-theme-1'));
@@ -91,11 +111,11 @@ const changeTheme = () => {
       .querySelectorAll('.li-theme-2')
       .forEach((element) => element.classList.add('li-theme-1'));
     document
-      .querySelectorAll('.completed-theme-2')
-      .forEach((element) => element.classList.add('completed-theme-1'));
-    document
       .querySelectorAll('.li-theme-1')
       .forEach((element) => element.classList.remove('li-theme-2'));
+    document
+      .querySelectorAll('.completed-theme-2')
+      .forEach((element) => element.classList.add('completed-theme-1'));
     document
       .querySelectorAll('.completed-theme-1')
       .forEach((element) => element.classList.remove('completed-theme-2'));
@@ -103,14 +123,14 @@ const changeTheme = () => {
 };
 
 // Event listeners
-toggleSwitchEle.addEventListener('click', changeTheme);
+toggleSwitchEle.addEventListener('click', toggleHandler);
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const taskEle = document.querySelector('.new-task');
   const task = taskEle.value;
   if (task === '') return;
-  addToList(task);
+  newTask(task);
   taskEle.value = '';
 });
 
